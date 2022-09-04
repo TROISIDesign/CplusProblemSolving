@@ -1,0 +1,23 @@
+
+
+
+
+
+
+
+
+
+
+
+// Minimize dependencies (esp. in headers/interfaces) if you care about build times, maintainability and code quality in general. 
+// In general, a clear separation between interface (declaration) and implementation (definition) is a good thing.
+
+// Unfortunately Eigen does not help, as you tend to pull in lots of Eigen headers just to get the types, and the template magic 
+// can take ages to compile (I've seen examples where 50 lines of code take several minutes to compile).
+
+// Other than that, classes are good to enforce certain behaviour. E.g. with pure structs/PODs it's very hard to guarantee state 
+// initialization and consistency, and can make feature additions & refactoring a real pain (e.g what happens if you add a new 
+// field in a widely used struct? You may have to manually go through all the code that uses it and make sure that 
+// initializations and updates result in a correct state). With classes you can make members private and force initialization and
+//  updates to happen via constructors and methods.
+
