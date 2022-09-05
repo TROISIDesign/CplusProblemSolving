@@ -48,3 +48,52 @@ tackle them one by one:
 - Treating doubled numbers 10 and greater according to their individual digits
 - Knowing we’ve reached the end of the number
 - Reading each digit separately
+
+To solve problems, we’ll be working on individual pieces before writing a final
+solution. Thus, there is no need to work on these issues in any particular order.
+Start with the issue that looks the easiest or, if you want a challenge, the one that
+looks the most difficult. Or just start with the one that’s the most interesting.
+
+Let’s begin by tackling the doubled digits that are 10 and greater. This is a situation
+where problem constraints make things easier rather than more difficult.
+Computing the sum of the digits of an arbitrary integer could be a good amount of
+work by itself. But what is the range of possible values here? If we start with
+individual digits 0–9 and double them, the maximum value is 18. Therefore, there
+are only two possibilities. If the doubled value is a single digit, then there’s nothing
+more to do. If the doubled value is 10 or greater, then it must be in the range 10–
+18, and therefore the first digit is always 1. Let’s do a quick code experiment to
+confirm this approach:
+
+'code' int digit;
+cout << "Enter a single digit number, 0-9: ";
+cin >> digit;
+int doubledDigit = digit * 2;
+int sum;
+if (doubledDigit >= 10) sum = 1 + doubledDigit % 10;
+else sum = doubledDigit;
+cout << "Sum of digits in doubled number: " << sum << "\n";
+
+
+NOTE
+The % operator is called the modulo operator. For positive integers, it returns the remainder of integer
+division. For example, 12 % 10 would be 2 because after dividing 10 into 12, the 2 is left over.
+This is straightforward code: the program reads the digit, doubles it , sums the
+digits of the doubled number , and outputs the sum . The heart of the
+experiment is the calculation of the sum for a doubled number that is greater than
+10 . As with the calculation of the number of hash marks needed for a particular
+row in our shapes problems, isolating this calculation to a short program of its own
+makes experimentation easy. Even if we don’t get the correct formula at first, we’re
+sure to find it quickly.
+Before we scratch this issue off our list, let’s turn this code into a short function we
+can use to simplify future code listings:
+int doubleDigitValue(int digit) {
+int doubledDigit = digit * 2;
+int sum;
+if (doubledDigit > 10) sum = 1 + doubledDigit % 10;
+else sum = doubledDigit;
+return sum;
+}
+Now let’s work on reading the individual digits of the identification number. Again,
+we could tackle a different issue next if we wanted, but I think this issue is a good
+choice because it will allow us to type the identification number naturally when
+testing the other parts of the problem
