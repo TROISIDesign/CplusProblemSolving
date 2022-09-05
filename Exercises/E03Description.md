@@ -64,7 +64,8 @@ more to do. If the doubled value is 10 or greater, then it must be in the range 
 18, and therefore the first digit is always 1. Let’s do a quick code experiment to
 confirm this approach:
 
-'code' int digit;
+```
+int digit;
 cout << "Enter a single digit number, 0-9: ";
 cin >> digit;
 int doubledDigit = digit * 2;
@@ -72,7 +73,7 @@ int sum;
 if (doubledDigit >= 10) sum = 1 + doubledDigit % 10;
 else sum = doubledDigit;
 cout << "Sum of digits in doubled number: " << sum << "\n";
-
+```
 
 NOTE
 The % operator is called the modulo operator. For positive integers, it returns the remainder of integer
